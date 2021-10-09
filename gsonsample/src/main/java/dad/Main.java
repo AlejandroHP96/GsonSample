@@ -1,45 +1,46 @@
 package dad;
 
 
-import java.time.Instant;
 import java.time.LocalDate;
 import java.util.Scanner;
 
-import com.google.gson.GsonBuilder;
+import com.google.gson.Gson;
 
 
 public class Main {
+    
 
     public static void main(String[] args) {
 
         Scanner in = new Scanner(System.in);
-        Persona p = new Persona();
-        String nombre, apellidos;
+        String nombre, apellidos,fechaNacimiento;
         LocalDate fechaActual = LocalDate.now();
-        int year,yearPerson,total;
-        year = fechaActual.getYear();
 
         System.out.println("Introduce un nombre:");
         nombre = in.nextLine();
-        p.setNombre(nombre);
 
         System.out.println("Introduce un apellido");
         apellidos = in.nextLine();
-        p.setApellidos(apellidos);
         
         System.out.println("Introduce tu año de nacimiento");
-        p.setFechaNac(Instant.now());
+        fechaNacimiento = in.nextLine();
 
-        InstantAdapter ia = new InstantAdapter();
+        in.close();
+
+        Persona p = new Persona(nombre, apellidos,restaFechas(fechaNacimiento,fechaActual));
+
 		
-		Gson gson = new GsonBuilder()
-						.registerTypeAdapter(Instant.class, ia)
-						.setPrettyPrinting()
-						.create();
+		Gson gson = new Gson();
                         
 		String json = gson.toJson(p);
 		
 		System.out.println(json);
 	}
+
+    public static int restaFechas(String fechaNacimiento, LocalDate fechaLocal){
+
+        int resultado = fechaLocal.getYear() -Integer.parseInt(fechaNacimiento);
+        return resultado;
+    }
 
 }

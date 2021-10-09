@@ -1,9 +1,5 @@
 package dad;
 
-import java.sql.Date;
-import java.time.Instant;
-
-
 /**
  * Persona
  */
@@ -11,7 +7,13 @@ public class Persona {
 
     private String nombre;
     private String apellidos;
-    private Instant fechaNac;
+    private Integer edad;
+
+    public Persona (String nombre,String apellidos, Integer edad){
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.edad = edad;
+    }
 
     public String getNombre() {
         return nombre;
@@ -31,13 +33,13 @@ public class Persona {
         this.apellidos = apellidos;
     }
 
-    public Instant getFechaNac() {
-        return fechaNac;
+    public Integer getEdad() {
+        return edad;
     }
 
-    public void setFechaNac(Instant fechaNac) {
+    public void setEdad(Integer edad) {
 
-        this.fechaNac = fechaNac;
+        this.edad = edad;
     }
 
 }
