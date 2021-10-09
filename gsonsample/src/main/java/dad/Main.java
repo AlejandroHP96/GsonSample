@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.util.Scanner;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 
 public class Main {
@@ -29,9 +30,8 @@ public class Main {
 
         Persona p = new Persona(nombre, apellidos,restaFechas(fechaNacimiento,fechaActual));
 
-		
-		Gson gson = new Gson();
-                        
+		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
 		String json = gson.toJson(p);
 		
 		System.out.println(json);
@@ -39,7 +39,7 @@ public class Main {
 
     public static int restaFechas(String fechaNacimiento, LocalDate fechaLocal){
 
-        int resultado = fechaLocal.getYear() -Integer.parseInt(fechaNacimiento);
+        int resultado = fechaLocal.getYear() - Integer.parseInt(fechaNacimiento);
         return resultado;
     }
 
