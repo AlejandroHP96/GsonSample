@@ -5,11 +5,13 @@
   <packaging>jar</packaging>
   <version>1.0-SNAPSHOT</version>
   <name>gsonsample</name>
+  
 
   <properties>
     <maven.compiler.target>11</maven.compiler.target>
     <maven.compiler.source>11</maven.compiler.source>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <exec.mainClass>dad.Main</exec.mainClass>
   </properties>
 
   <dependencies>
